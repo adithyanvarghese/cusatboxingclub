@@ -37,6 +37,20 @@ export default function JoinPage() {
       } catch (err) {
         // ignore if confetti fails
       }
+
+      // Automatically open WhatsApp with pre-filled athlete details
+      const message = `🥊 *NEW ATHLETE REGISTRATION - CUSAT BOXING CLUB* 🥊\n\n` +
+        `👤 *Full Name:* ${formData.fullName}\n` +
+        `📧 *Email:* ${formData.email}\n` +
+        `📱 *WhatsApp Phone:* ${formData.phone}\n` +
+        `🏫 *School/College/Status:* ${formData.department}\n` +
+        `🏅 *Membership Pathway:* ${formData.category}\n` +
+        `⚖️ *Weight Category:* ${formData.weightClass}\n` +
+        `🥊 *Experience:* ${formData.experience}\n\n` +
+        `Hi Coach, please confirm my registration for CUSAT Boxing Club!`;
+
+      const waUrl = `https://wa.me/919544457903?text=${encodeURIComponent(message)}`;
+      window.open(waUrl, '_blank');
     }
   };
 

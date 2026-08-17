@@ -23,6 +23,16 @@ export default function TrialSection() {
         origin: { y: 0.6 }
       });
     } catch (err) {}
+
+    const message = `🥊 *FREE TRIAL SESSION BOOKING - CUSAT BOXING CLUB* 🥊\n\n` +
+      `👤 *Full Name:* ${formData.name}\n` +
+      `📱 *Phone Number:* ${formData.phone}\n` +
+      `🏅 *Category:* ${formData.category}\n` +
+      `⏰ *Preferred Time:* ${formData.preferredTime}\n\n` +
+      `Hi Coach, I would like to book a free trial session at CUSAT Boxing Club!`;
+
+    const waUrl = `https://wa.me/919544457903?text=${encodeURIComponent(message)}`;
+    window.open(waUrl, '_blank');
   };
 
   return (
