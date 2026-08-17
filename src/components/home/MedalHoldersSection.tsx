@@ -91,6 +91,7 @@ export default function MedalHoldersSection() {
                 src={holder.image}
                 alt="CUSAT Boxing Achievement"
                 fill
+                sizes="(max-width: 640px) 320px, 384px"
                 className="object-cover group-hover:scale-105 transition-transform duration-700 brightness-95 group-hover:brightness-100"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent group-hover:from-black/40 transition-colors duration-500" />
