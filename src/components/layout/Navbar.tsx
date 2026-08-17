@@ -14,7 +14,6 @@ const NAV_LINKS = [
   { name: 'FACILITIES', href: '/facilities' },
   { name: 'GALLERY', href: '/gallery' },
   { name: 'SCHEDULE', href: '/schedule' },
-  { name: 'EVENTS', href: '/events' },
   { name: 'PRICING', href: '/pricing' },
   { name: 'ABOUT US', href: '/about' },
 ];

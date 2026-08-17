@@ -2,8 +2,8 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Search, X, User, Calendar, Trophy, ArrowRight } from 'lucide-react';
-import { COACHES, ATHLETES, UPCOMING_EVENTS } from '@/data/clubData';
+import { Search, X, User, Trophy, ArrowRight } from 'lucide-react';
+import { COACHES, ATHLETES } from '@/data/clubData';
 
 interface SearchModalProps {
   isOpen: boolean;
@@ -41,10 +41,6 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
     ? ATHLETES.filter(a => a.name.toLowerCase().includes(query.toLowerCase()) || a.weightClass.toLowerCase().includes(query.toLowerCase()) || a.department.toLowerCase().includes(query.toLowerCase()))
     : [];
 
-  const filteredEvents = query
-    ? UPCOMING_EVENTS.filter(e => e.title.toLowerCase().includes(query.toLowerCase()) || e.location.toLowerCase().includes(query.toLowerCase()) || e.category.toLowerCase().includes(query.toLowerCase()))
-    : [];
-
   return (
     <div
       onClick={handleClose}
@@ -61,7 +57,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search coaches, athletes, upcoming events, or gold medals..."
+            placeholder="Search coaches, athletes, or gold medalists..."
             className="flex-1 bg-transparent text-white placeholder-neutral-500 focus:outline-none text-base"
             autoFocus
           />
@@ -78,7 +74,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
         <div className="max-h-[60vh] overflow-y-auto p-4 space-y-6">
           {!query && (
             <div className="text-center py-8 text-neutral-500 text-sm">
-              Type to search CUSAT Boxing athletes, tournaments, or coach credentials...
+              Type to search CUSAT Boxing athletes, championship medals, or coach credentials...
             </div>
           )}
 
@@ -132,34 +128,9 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
             </div>
           )}
 
-          {/* Events */}
-          {filteredEvents.length > 0 && (
-            <div>
-              <p className="text-xs font-semibold text-[#C89B3C] uppercase tracking-widest mb-2 flex items-center gap-1.5">
-                <Calendar className="w-3.5 h-3.5" /> Upcoming Events
-              </p>
-              <div className="space-y-2">
-                {filteredEvents.map((event) => (
-                  <Link
-                    key={event.id}
-                    href="/events"
-                    onClick={handleClose}
-                    className="flex items-center justify-between p-3 rounded-lg bg-black/40 hover:bg-white/5 border border-white/5 hover:border-[#C89B3C]/40 transition-all"
-                  >
-                    <div>
-                      <p className="text-white font-medium">{event.title}</p>
-                      <p className="text-xs text-neutral-400">{event.date} • {event.location}</p>
-                    </div>
-                    <ArrowRight className="w-4 h-4 text-neutral-500" />
-                  </Link>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {query && filteredCoaches.length === 0 && filteredAthletes.length === 0 && filteredEvents.length === 0 && (
+          {query && filteredCoaches.length === 0 && filteredAthletes.length === 0 && (
             <div className="text-center py-8 text-neutral-400 text-sm">
-              No results found for &quot;<span className="text-white">{query}</span>&quot;. Try searching &quot;Coach&quot;, &quot;Trials&quot;, or &quot;Arjun&quot;.
+              No results found for &quot;<span className="text-white">{query}</span>&quot;. Try searching &quot;Coach&quot;, &quot;Arjun&quot;, or &quot;Engineering&quot;.
             </div>
           )}
         </div>

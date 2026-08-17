@@ -57,8 +57,7 @@ export default function Footer() {
                 { label: 'Home', href: '/' },
                 { label: 'About Club', href: '/about' },
                 { label: 'Varsity Team', href: '/team' },
-                { label: 'Tournaments', href: '/events' },
-                { label: 'Facilities & Arena', href: '/#facilities' },
+                { label: 'Facilities & Arena', href: '/facilities' },
                 { label: 'Photo Gallery', href: '/gallery' },
                 { label: 'Membership', href: '/join' },
               ].map((item) => (
