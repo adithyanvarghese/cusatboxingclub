@@ -522,45 +522,31 @@ export const SPONSORS = [
 
 export const MEMBERSHIP_TIERS = [
   {
-    name: "School & Youth Cadet",
-    price: "₹799",
+    name: "CUSAT University Students",
+    price: "₹500",
+    period: "per month",
+    popular: false,
+    description: "Discounted athletic concession rate for enrolled CUSAT undergraduate & postgraduate students.",
+    features: [
+      "Valid CUSAT Student ID required",
+      "Full access to daily coaching (05:30 PM - 08:30 PM)",
+      "Ring sparring, heavy bag & reflex ball drills",
+      "All-India Inter-University selection eligibility",
+      "Certificate & university grace mark support"
+    ]
+  },
+  {
+    name: "General Public & All Members",
+    price: "₹1,000",
     period: "per month",
     popular: true,
-    description: "Tailored for school children & youth (ages 8 to 17) building discipline, self-defense & motor agility.",
+    description: "Open admission rate for school children, youth cadets, working professionals, and general public.",
     features: [
-      "Age-appropriate non-contact & controlled drills",
-      "Full protective gear & youth headguards provided",
-      "Character development, focus & confidence training",
-      "School Games Federation tournament preparation",
-      "Special evening & weekend junior slots"
-    ]
-  },
-  {
-    name: "CUSAT Student Athlete",
-    price: "₹0",
-    period: "Full CUSAT Student Grant",
-    popular: false,
-    description: "Exclusive grant for enrolled CUSAT undergraduate & postgraduate students.",
-    features: [
-      "Access to daily coached training sessions",
-      "Full ring & bag room access",
-      "Eligible for University team selection",
-      "Official CUSAT Combat kit included",
-      "Sports grace marks & academic credit"
-    ]
-  },
-  {
-    name: "General Public & Adult Open",
-    price: "₹1,299",
-    period: "per month",
-    popular: false,
-    description: "Open to working professionals, adults, and non-CUSAT members for fitness or competitive boxing.",
-    features: [
-      "Coaching under IBA Certified Directors",
-      "Flexible morning & evening training batches",
-      "High-burn combat cardio & stress relief workouts",
-      "State & District tournament opportunity",
-      "Full locker room & facility access"
+      "100% Open to all ages (School kids, youth & adults)",
+      "Coaching under certified technical boxing directors",
+      "Daily evening training (05:30 PM - 08:30 PM)",
+      "Heavy bag zone, focus mitts & protective gear",
+      "District & State championship pathway"
     ]
   }
 ];

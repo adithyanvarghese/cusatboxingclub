@@ -8,7 +8,6 @@ import AboutPreview from '@/components/home/AboutPreview';
 import FacilitiesSection from '@/components/home/FacilitiesSection';
 import GalleryPreview from '@/components/home/GalleryPreview';
 import VideoSection from '@/components/home/VideoSection';
-import EventsPreview from '@/components/home/EventsPreview';
 import MedalHoldersSection from '@/components/home/MedalHoldersSection';
 import { constructMetadata, SITE_CONFIG } from '@/lib/seo';
 
@@ -109,15 +108,6 @@ export default function HomePage() {
 
         {/* 8. Training & Sparring Video Highlights */}
         <VideoSection />
-
-        {/* 7. Full-Bleed Action Divider 2 */}
-        <SectionDivider
-          imageSrc="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=2000&auto=format&fit=crop"
-          altText="CUSAT Heavy Bag Work"
-        />
-
-        {/* 9. Upcoming Bouts & Events */}
-        <EventsPreview />
       </main>
     </>
   );
