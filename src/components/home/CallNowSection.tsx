@@ -25,7 +25,7 @@ export default function CallNowSection() {
             </h2>
 
             <p className="text-neutral-300 text-lg leading-relaxed">
-              Have questions about batch timings, membership rates, or varsity squad trials? Call or message our coaching desk directly — no waiting or online forms required.
+              Have questions about batch timings, training programs, or varsity squad trials? Call or message our coaching desk directly — no waiting or online forms required.
             </p>
 
             {/* Direct Contact Action Badges */}
@@ -61,7 +61,7 @@ export default function CallNowSection() {
                     <span>Chat on WhatsApp ({SITE_CONFIG.phone})</span>
                     <ArrowRight className="w-4 h-4" />
                   </a>
-                  <p className="text-xs text-neutral-400 mt-0.5">Instant fee & batch details</p>
+                  <p className="text-xs text-neutral-400 mt-0.5">Instant batch & schedule details</p>
                 </div>
               </div>
             </div>
@@ -75,7 +75,7 @@ export default function CallNowSection() {
                 <div>
                   <strong className="text-white font-heading text-lg block">MONDAY TO FRIDAY BATCHES</strong>
                   <span className="text-neutral-300">Morning: 06:30 AM – 08:30 AM</span><br />
-                  <span className="text-neutral-300">Evening: 05:30 PM – 08:30 PM</span>
+                  <span className="text-neutral-300">Evening Batches: 05:30 PM – 07:00 PM & 06:30 PM – 08:30 PM</span>
                 </div>
               </div>
 
@@ -84,7 +84,7 @@ export default function CallNowSection() {
                 <div>
                   <strong className="text-white font-heading text-lg block">SATURDAY SPECIAL BATCHES</strong>
                   <span className="text-neutral-300">Morning: 06:30 AM – 08:30 AM (Long Running)</span><br />
-                  <span className="text-neutral-300">Evening: 05:30 PM – 08:30 PM (Weight Training)</span>
+                  <span className="text-neutral-300">Evening Batches: 05:30 PM – 07:00 PM & 06:30 PM – 08:30 PM (Weight Training)</span>
                 </div>
               </div>
 

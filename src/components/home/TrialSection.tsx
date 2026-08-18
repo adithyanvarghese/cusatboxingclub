@@ -9,7 +9,7 @@ export default function TrialSection() {
     name: '',
     phone: '',
     category: 'School & Youth Cadet (Ages 8-17)',
-    preferredTime: 'Evening Batch (04:30 PM)'
+    preferredTime: 'Evening Batch 1 (05:30 PM - 07:00 PM)'
   });
   const [submitted, setSubmitted] = useState(false);
 
@@ -155,8 +155,8 @@ export default function TrialSection() {
                     className="w-full p-3.5 rounded-lg bg-black border border-white/20 text-white focus:border-[#C89B3C] focus:outline-none"
                   >
                     <option>Morning Batch (06:30 AM - 08:30 AM)</option>
-                    <option>Junior Evening Batch (04:00 PM - 05:30 PM)</option>
-                    <option>Main Evening Batch (05:30 PM - 07:30 PM)</option>
+                    <option>Evening Batch 1 (05:30 PM - 07:00 PM)</option>
+                    <option>Evening Batch 2 (06:30 PM - 08:30 PM)</option>
                   </select>
                 </div>
 

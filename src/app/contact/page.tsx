@@ -53,7 +53,7 @@ export default function ContactPage() {
                   <Clock className="w-5 h-5 text-[#C89B3C] shrink-0 mt-1" />
                   <div>
                     <strong className="text-white font-medium block">Gym Timings:</strong>
-                    <span>Mon - Fri Morning: 06:30 AM - 08:30 AM | Evening: 04:30 PM - 07:00 PM<br />Sat Morning: 06:30 AM - 08:30 AM (Long Running) | Sat Evening: 04:30 PM - 06:30 PM (Weight Training)<br /><span className="text-red-400 font-semibold">Sunday: Completely OFF (Rest Day)</span></span>
+                    <span>Mon - Fri Morning: 06:30 AM - 08:30 AM | Evening Batches: 05:30 PM - 07:00 PM & 06:30 PM - 08:30 PM<br />Sat Morning: 06:30 AM - 08:30 AM (Long Running) | Sat Evening Batches: 05:30 PM - 07:00 PM & 06:30 PM - 08:30 PM (Weight Training)<br /><span className="text-red-400 font-semibold">Sunday: Completely OFF (Rest Day)</span></span>
                   </div>
                 </li>
                 <li className="flex items-center gap-3">

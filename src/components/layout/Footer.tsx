@@ -81,11 +81,6 @@ export default function Footer() {
             </h4>
             <ul className="space-y-2.5">
               <li>
-                <Link href="/team" className="hover:text-[#C89B3C] transition-colors">
-                  Men&apos;s Boxing Squad
-                </Link>
-              </li>
-              <li>
                 <Link href="/#facilities" className="hover:text-[#C89B3C] transition-colors">
                   Ring & Training Facilities
                 </Link>

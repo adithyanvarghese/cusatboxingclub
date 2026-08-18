@@ -130,7 +130,7 @@ export const COURSES: Course[] = [
     bwImage: "/training photos/unnamed (2).webp",
     colorImage: "/training photos/unnamed (2).webp",
     targetAudience: "Working Professionals & Fitness Enthusiasts",
-    schedule: "Mon to Sat • Morning 06:30 AM & Evening 05:30 PM",
+    schedule: "Mon to Sat • Morning 06:30 AM & Evening Batches (05:30 PM - 07:00 PM & 06:30 PM - 08:30 PM)",
     features: ["1,000+ Calorie Burn", "Zero Contact Sparring Required", "Stress Relief Mitt Work", "Core & Agility Circuits"]
   },
   {
@@ -142,7 +142,7 @@ export const COURSES: Course[] = [
     bwImage: "/training photos/unnamed (1).webp",
     colorImage: "/training photos/unnamed (1).webp",
     targetAudience: "Competitive Athletes & Tournament Boxers",
-    schedule: "Tue, Thu, Sat • 05:30 PM - 08:30 PM",
+    schedule: "Tue, Thu, Sat • Evening Batches (05:30 PM - 07:00 PM & 06:30 PM - 08:30 PM)",
     features: ["Full Competition Ring", "Refereed Simulation Bouts", "State & AIU Qualifiers", "Corner Strategy Coaching"]
   },
   {
@@ -363,6 +363,14 @@ export const UPCOMING_EVENTS: EventItem[] = [
 
 export const GALLERY_ITEMS: GalleryItem[] = [
   {
+    id: "g-newachieve",
+    title: "University Boxing Squad Championship Victory & Achievements",
+    category: "Championship",
+    image: "/training photos/newachieve.jpeg",
+    type: "image",
+    aspectRatio: "landscape"
+  },
+  {
     id: "g1",
     title: "CUSAT Ring Sparring & Tactical Bouts",
     category: "Training",
@@ -520,44 +528,13 @@ export const SPONSORS = [
   { name: "Titanium Athletics", logo: "🛡️ TITANIUM" }
 ];
 
-export const MEMBERSHIP_TIERS = [
-  {
-    name: "CUSAT University Students",
-    price: "₹500",
-    period: "per month",
-    popular: false,
-    description: "Discounted athletic concession rate for enrolled CUSAT undergraduate & postgraduate students.",
-    features: [
-      "Valid CUSAT Student ID required",
-      "Full access to daily coaching (05:30 PM - 08:30 PM)",
-      "Ring sparring, heavy bag & reflex ball drills",
-      "All-India Inter-University selection eligibility",
-      "Certificate & university grace mark support"
-    ]
-  },
-  {
-    name: "General Public & All Members",
-    price: "₹1,000",
-    period: "per month",
-    popular: true,
-    description: "Open admission rate for school children, youth cadets, working professionals, and general public.",
-    features: [
-      "100% Open to all ages (School kids, youth & adults)",
-      "Coaching under certified technical boxing directors",
-      "Daily evening training (05:30 PM - 08:30 PM)",
-      "Heavy bag zone, focus mitts & protective gear",
-      "District & State championship pathway"
-    ]
-  }
-];
-
 export const WEEKLY_SCHEDULE = [
-  { day: "Monday", morning: "06:30 AM - 08:30 AM (Cardio & Roadwork)", evening: "05:30 PM - 08:30 PM (Technical Stance & Footwork)" },
-  { day: "Tuesday", morning: "06:30 AM - 08:30 AM (Bag Drills & Core)", evening: "05:30 PM - 08:30 PM (Punch Combinations & Bag Work)" },
-  { day: "Wednesday", morning: "06:30 AM - 08:30 AM (Plyometrics & Sprints)", evening: "05:30 PM - 08:30 PM (Counter-Punching & Defense Slips)" },
-  { day: "Thursday", morning: "06:30 AM - 08:30 AM (Athletic Plyometrics & Conditioning)", evening: "05:30 PM - 08:30 PM (Coached Ring Sparring)" },
-  { day: "Friday", morning: "06:30 AM - 08:30 AM (Speed Bag & Reflex Drills)", evening: "05:30 PM - 08:30 PM (Refereed Simulation Bouts)" },
-  { day: "Saturday", morning: "06:30 AM - 08:30 AM (Long Running & Outdoor Endurance)", evening: "05:30 PM - 08:30 PM (Heavy Bag & Sparring Session)" },
+  { day: "Monday", morning: "06:30 AM - 08:30 AM (Cardio & Roadwork)", evening: "05:30 PM - 07:00 PM & 06:30 PM - 08:30 PM (Technical Stance & Footwork)" },
+  { day: "Tuesday", morning: "06:30 AM - 08:30 AM (Bag Drills & Core)", evening: "05:30 PM - 07:00 PM & 06:30 PM - 08:30 PM (Punch Combinations & Bag Work)" },
+  { day: "Wednesday", morning: "06:30 AM - 08:30 AM (Plyometrics & Sprints)", evening: "05:30 PM - 07:00 PM & 06:30 PM - 08:30 PM (Counter-Punching & Defense Slips)" },
+  { day: "Thursday", morning: "06:30 AM - 08:30 AM (Athletic Plyometrics & Conditioning)", evening: "05:30 PM - 07:00 PM & 06:30 PM - 08:30 PM (Coached Ring Sparring)" },
+  { day: "Friday", morning: "06:30 AM - 08:30 AM (Speed Bag & Reflex Drills)", evening: "05:30 PM - 07:00 PM & 06:30 PM - 08:30 PM (Refereed Simulation Bouts)" },
+  { day: "Saturday", morning: "06:30 AM - 08:30 AM (Long Running & Outdoor Endurance)", evening: "05:30 PM - 07:00 PM & 06:30 PM - 08:30 PM (Heavy Bag & Sparring Session)" },
   { day: "Sunday", morning: "OFF (Rest Day)", evening: "OFF (Rest Day)" }
 ];
 
@@ -584,7 +561,7 @@ export const FAQS = [
   },
   {
     question: "What are the training hours for school children vs adults?",
-    answer: "Coaching sessions are conducted in the morning (06:30 AM - 08:30 AM) and evening (05:30 PM - 08:30 PM) for all members from Monday to Saturday."
+    answer: "Coaching sessions are conducted in the morning (06:30 AM - 08:30 AM) and two evening batches (05:30 PM - 07:00 PM & 06:30 PM - 08:30 PM) for all members from Monday to Saturday."
   }
 ];
 
@@ -655,6 +632,16 @@ export const VIDEO_HIGHLIGHTS: VideoItem[] = [
 ];
 
 export const MEDAL_HOLDERS: MedalHolder[] = [
+  {
+    id: "mh-newachieve",
+    name: "University Boxing Squad",
+    medal: "Gold",
+    tournament: "Inter-University Boxing Championship",
+    weightClass: "Varsity Squad Champions",
+    year: "2025",
+    department: "CUSAT Boxing Club",
+    image: "/training photos/newachieve.jpeg"
+  },
   {
     id: "mh-1",
     name: "Arjun K.",

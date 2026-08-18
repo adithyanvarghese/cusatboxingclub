@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { Shield, CheckCircle2, Calendar, Sparkles, Trophy, Award, UserCheck, Dumbbell } from 'lucide-react';
-import { MEMBERSHIP_TIERS, WEEKLY_SCHEDULE } from '@/data/clubData';
+import { WEEKLY_SCHEDULE } from '@/data/clubData';
 import confetti from 'canvas-confetti';
 
 export default function JoinPage() {
@@ -70,62 +70,6 @@ export default function JoinPage() {
         <p className="mt-6 text-neutral-300 text-lg sm:text-xl max-w-2xl mx-auto leading-relaxed">
           100% Open to school children (ages 8+), university students, working professionals, and boxing enthusiasts of all age groups. Select your pathway below.
         </p>
-      </section>
-
-      {/* Membership Tiers Cards */}
-      <section className="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto mb-24">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {MEMBERSHIP_TIERS.map((tier) => (
-            <div
-              key={tier.name}
-              className={`rounded-2xl p-8 flex flex-col justify-between transition-all duration-300 ${
-                tier.popular
-                  ? 'glass-panel-gold border-2 border-[#C89B3C] relative transform md:-translate-y-2'
-                  : 'glass-panel border border-white/10'
-              }`}
-            >
-              {tier.popular && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-[#C89B3C] text-black font-heading text-sm font-bold uppercase tracking-wider">
-                  MOST POPULAR • FULL CUSAT GRANT
-                </div>
-              )}
-
-              <div className="space-y-6">
-                <div>
-                  <h3 className="font-heading text-3xl text-white tracking-wide">{tier.name}</h3>
-                  <p className="text-xs text-neutral-400 mt-1">{tier.description}</p>
-                </div>
-
-                <div className="flex items-baseline gap-2">
-                  <span className="font-heading text-5xl text-[#C89B3C] font-bold">{tier.price}</span>
-                  <span className="text-xs text-neutral-400">{tier.period}</span>
-                </div>
-
-                <ul className="space-y-3 border-t border-white/10 pt-6 text-sm text-neutral-300">
-                  {tier.features.map((feat, idx) => (
-                    <li key={idx} className="flex items-start gap-2.5">
-                      <CheckCircle2 className="w-4 h-4 text-[#C89B3C] shrink-0 mt-0.5" />
-                      <span>{feat}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="pt-8">
-                <a
-                  href="#register-form"
-                  className={`block w-full text-center py-3.5 rounded-lg font-heading text-xl tracking-wider font-bold transition-all ${
-                    tier.popular
-                      ? 'bg-gradient-to-r from-[#C89B3C] to-[#A87E27] text-black shadow-lg shadow-[#C89B3C]/30'
-                      : 'bg-[#141414] border border-[#C89B3C] text-white hover:bg-[#C89B3C] hover:text-black'
-                  }`}
-                >
-                  SELECT THIS PATHWAY
-                </a>
-              </div>
-            </div>
-          ))}
-        </div>
       </section>
 
       {/* Weekly Training Schedule Table */}
