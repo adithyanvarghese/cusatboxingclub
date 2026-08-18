@@ -6,12 +6,38 @@ import { SITE_CONFIG } from '@/lib/seo';
 import { InstagramIcon, FacebookIcon } from '@/components/ui/SocialIcons';
 
 export default function ContactPage() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  });
   const [sent, setSent] = useState(false);
+
+  const getWaUrl = () => {
+    const text = `🥊 *DIRECT INQUIRY - CUSAT BOXING CLUB* 🥊\n\n` +
+      `👤 *Name:* ${formData.name}\n` +
+      `📧 *Email:* ${formData.email}\n` +
+      `📌 *Subject:* ${formData.subject}\n` +
+      `💬 *Message:* ${formData.message}\n\n` +
+      `Hi Coach, I sent an inquiry via the website contact desk.`;
+
+    return `https://wa.me/919544457903?text=${encodeURIComponent(text)}`;
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setSent(true);
-    setTimeout(() => setSent(false), 3000);
+
+    const waUrl = getWaUrl();
+    try {
+      const win = window.open(waUrl, '_blank');
+      if (!win || win.closed || typeof win.closed === 'undefined') {
+        window.location.href = waUrl;
+      }
+    } catch (err) {
+      window.location.href = waUrl;
+    }
   };
 
   return (
@@ -72,10 +98,9 @@ export default function ContactPage() {
                 </li>
               </ul>
 
-              {/* Social Channels */}
               <div className="pt-4 border-t border-white/10">
-                <p className="text-xs uppercase text-neutral-400 font-semibold mb-3">FOLLOW OUR BOUTS & ANNOUNCEMENTS</p>
-                <div className="flex items-center gap-4">
+                <h3 className="text-xs uppercase font-semibold text-neutral-400 mb-3">OFFICIAL SOCIAL CHANNELS</h3>
+                <div className="flex flex-wrap gap-3">
                   <a
                     href={SITE_CONFIG.socials.instagram}
                     target="_blank"
@@ -109,7 +134,7 @@ export default function ContactPage() {
                   href={SITE_CONFIG.mapsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#C89B3C] text-black font-bold text-xs uppercase hover:bg-[#d6a94a] transition-all"
+                  className="text-xs font-semibold text-[#C89B3C] hover:underline flex items-center gap-1"
                 >
                   <span>Open Maps</span>
                   <ExternalLink className="w-3.5 h-3.5" />
@@ -136,13 +161,32 @@ export default function ContactPage() {
           <div className="p-8 sm:p-10 rounded-2xl glass-panel border border-white/10 flex flex-col justify-between">
             <div>
               <h2 className="font-heading text-3xl text-white mb-2">SEND US A MESSAGE</h2>
-              <p className="text-xs text-neutral-400 mb-6">Our coaching desk typically responds within 12 hours.</p>
+              <p className="text-xs text-neutral-400 mb-6">Messages redirect directly to our coaching desk on WhatsApp.</p>
 
               {sent ? (
                 <div className="text-center py-12 space-y-4">
                   <CheckCircle2 className="w-16 h-16 text-[#C89B3C] mx-auto animate-bounce" />
-                  <h3 className="font-heading text-3xl text-white">MESSAGE SENT SUCCESSFULLY!</h3>
-                  <p className="text-neutral-300 text-sm">Thank you for reaching out to CUSAT Boxing Club. We will get back to you shortly.</p>
+                  <h3 className="font-heading text-3xl text-white">MESSAGE SENT!</h3>
+                  <p className="text-neutral-300 text-sm">
+                    Thank you <span className="text-[#C89B3C] font-bold">{formData.name}</span>. Your message has been formatted and redirected to our WhatsApp desk.
+                  </p>
+                  <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-3">
+                    <a
+                      href={getWaUrl()}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-6 py-3 rounded-lg bg-emerald-500 hover:bg-emerald-600 text-black font-heading text-lg font-bold flex items-center gap-2 shadow-lg shadow-emerald-500/20"
+                    >
+                      <MessageCircle className="w-5 h-5 fill-current" />
+                      <span>OPEN IN WHATSAPP NOW</span>
+                    </a>
+                    <button
+                      onClick={() => setSent(false)}
+                      className="px-6 py-3 rounded-lg bg-black border border-[#C89B3C] text-[#C89B3C] font-heading text-lg font-bold"
+                    >
+                      SEND ANOTHER
+                    </button>
+                  </div>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4">
@@ -151,6 +195,8 @@ export default function ContactPage() {
                     <input
                       type="text"
                       required
+                      value={formData.name}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       placeholder="e.g. Rahul Nair"
                       className="w-full p-3.5 rounded-lg bg-black border border-white/20 text-white focus:border-[#C89B3C] focus:outline-none"
                     />
@@ -161,6 +207,8 @@ export default function ContactPage() {
                     <input
                       type="email"
                       required
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       placeholder="rahul@example.com"
                       className="w-full p-3.5 rounded-lg bg-black border border-white/20 text-white focus:border-[#C89B3C] focus:outline-none"
                     />
@@ -171,6 +219,8 @@ export default function ContactPage() {
                     <input
                       type="text"
                       required
+                      value={formData.subject}
+                      onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                       placeholder="e.g. Sparring Session Inquiry / Trial Information"
                       className="w-full p-3.5 rounded-lg bg-black border border-white/20 text-white focus:border-[#C89B3C] focus:outline-none"
                     />
@@ -181,6 +231,8 @@ export default function ContactPage() {
                     <textarea
                       rows={5}
                       required
+                      value={formData.message}
+                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                       placeholder="Type your question or message here..."
                       className="w-full p-3.5 rounded-lg bg-black border border-white/20 text-white focus:border-[#C89B3C] focus:outline-none"
                     />
@@ -191,7 +243,7 @@ export default function ContactPage() {
                     className="w-full py-4 rounded-lg bg-gradient-to-r from-[#C89B3C] to-[#A87E27] text-black font-heading text-xl font-bold shadow-lg shadow-[#C89B3C]/20 flex items-center justify-center gap-2"
                   >
                     <Send className="w-5 h-5" />
-                    <span>TRANSMIT MESSAGE</span>
+                    <span>SEND MESSAGE VIA WHATSAPP</span>
                   </button>
                 </form>
               )}

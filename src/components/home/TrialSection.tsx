@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Sparkles, Calendar, Clock, CheckCircle2, Shield, ArrowRight } from 'lucide-react';
+import { Sparkles, Calendar, Clock, CheckCircle2, Shield, ArrowRight, MessageCircle } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
 export default function TrialSection() {
@@ -12,6 +12,17 @@ export default function TrialSection() {
     preferredTime: 'Evening Batch 1 (05:30 PM - 07:00 PM)'
   });
   const [submitted, setSubmitted] = useState(false);
+
+  const getWaUrl = () => {
+    const message = `🥊 *FREE TRIAL SESSION BOOKING - CUSAT BOXING CLUB* 🥊\n\n` +
+      `👤 *Full Name:* ${formData.name}\n` +
+      `📱 *Phone Number:* ${formData.phone}\n` +
+      `🏅 *Category:* ${formData.category}\n` +
+      `⏰ *Preferred Time:* ${formData.preferredTime}\n\n` +
+      `Hi Coach, I would like to book a free trial session at CUSAT Boxing Club!`;
+
+    return `https://wa.me/919544457903?text=${encodeURIComponent(message)}`;
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -24,15 +35,15 @@ export default function TrialSection() {
       });
     } catch (err) {}
 
-    const message = `🥊 *FREE TRIAL SESSION BOOKING - CUSAT BOXING CLUB* 🥊\n\n` +
-      `👤 *Full Name:* ${formData.name}\n` +
-      `📱 *Phone Number:* ${formData.phone}\n` +
-      `🏅 *Category:* ${formData.category}\n` +
-      `⏰ *Preferred Time:* ${formData.preferredTime}\n\n` +
-      `Hi Coach, I would like to book a free trial session at CUSAT Boxing Club!`;
-
-    const waUrl = `https://wa.me/919544457903?text=${encodeURIComponent(message)}`;
-    window.open(waUrl, '_blank');
+    const waUrl = getWaUrl();
+    try {
+      const win = window.open(waUrl, '_blank');
+      if (!win || win.closed || typeof win.closed === 'undefined') {
+        window.location.href = waUrl;
+      }
+    } catch (err) {
+      window.location.href = waUrl;
+    }
   };
 
   return (
@@ -94,14 +105,25 @@ export default function TrialSection() {
                 </div>
                 <h3 className="font-heading text-4xl text-white">TRIAL RESERVED!</h3>
                 <p className="text-neutral-300 text-base max-w-sm mx-auto">
-                  Thank you <span className="text-[#C89B3C] font-bold">{formData.name}</span>. Our desk team will contact you via WhatsApp with trial arrival guidelines.
+                  Thank you <span className="text-[#C89B3C] font-bold">{formData.name}</span>. Your trial request has been formatted and redirected to our coaching desk on WhatsApp (+91 95444 57903).
                 </p>
-                <button
-                  onClick={() => setSubmitted(false)}
-                  className="px-6 py-2.5 rounded-lg bg-black border border-[#C89B3C] text-[#C89B3C] font-heading text-lg"
-                >
-                  BOOK ANOTHER SESSION
-                </button>
+                <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
+                  <a
+                    href={getWaUrl()}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-6 py-3 rounded-lg bg-emerald-500 hover:bg-emerald-600 text-black font-heading text-lg font-bold flex items-center gap-2 shadow-lg shadow-emerald-500/20"
+                  >
+                    <MessageCircle className="w-5 h-5 fill-current" />
+                    <span>OPEN IN WHATSAPP NOW</span>
+                  </a>
+                  <button
+                    onClick={() => setSubmitted(false)}
+                    className="px-6 py-3 rounded-lg bg-black border border-[#C89B3C] text-[#C89B3C] font-heading text-lg font-bold"
+                  >
+                    BOOK ANOTHER
+                  </button>
+                </div>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-5">

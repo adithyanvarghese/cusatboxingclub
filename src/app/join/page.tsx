@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Shield, CheckCircle2, Calendar, Sparkles, Trophy, Award, UserCheck, Dumbbell } from 'lucide-react';
+import { Shield, CheckCircle2, Calendar, Sparkles, Trophy, Award, UserCheck, Dumbbell, MessageCircle } from 'lucide-react';
 import { WEEKLY_SCHEDULE } from '@/data/clubData';
 import confetti from 'canvas-confetti';
 
@@ -18,6 +18,20 @@ export default function JoinPage() {
     fitnessGoal: 'University Podium & Championship'
   });
   const [submitted, setSubmitted] = useState(false);
+
+  const getWaUrl = () => {
+    const message = `🥊 *NEW ATHLETE REGISTRATION - CUSAT BOXING CLUB* 🥊\n\n` +
+      `👤 *Full Name:* ${formData.fullName}\n` +
+      `📧 *Email:* ${formData.email}\n` +
+      `📱 *WhatsApp Phone:* ${formData.phone}\n` +
+      `🏫 *School/College/Status:* ${formData.department}\n` +
+      `🏅 *Membership Pathway:* ${formData.category}\n` +
+      `⚖️ *Weight Category:* ${formData.weightClass}\n` +
+      `🥊 *Experience:* ${formData.experience}\n\n` +
+      `Hi Coach, please confirm my registration for CUSAT Boxing Club!`;
+
+    return `https://wa.me/919544457903?text=${encodeURIComponent(message)}`;
+  };
 
   const handleNextStep = (e: React.FormEvent) => {
     e.preventDefault();
@@ -38,19 +52,15 @@ export default function JoinPage() {
         // ignore if confetti fails
       }
 
-      // Automatically open WhatsApp with pre-filled athlete details
-      const message = `🥊 *NEW ATHLETE REGISTRATION - CUSAT BOXING CLUB* 🥊\n\n` +
-        `👤 *Full Name:* ${formData.fullName}\n` +
-        `📧 *Email:* ${formData.email}\n` +
-        `📱 *WhatsApp Phone:* ${formData.phone}\n` +
-        `🏫 *School/College/Status:* ${formData.department}\n` +
-        `🏅 *Membership Pathway:* ${formData.category}\n` +
-        `⚖️ *Weight Category:* ${formData.weightClass}\n` +
-        `🥊 *Experience:* ${formData.experience}\n\n` +
-        `Hi Coach, please confirm my registration for CUSAT Boxing Club!`;
-
-      const waUrl = `https://wa.me/919544457903?text=${encodeURIComponent(message)}`;
-      window.open(waUrl, '_blank');
+      const waUrl = getWaUrl();
+      try {
+        const win = window.open(waUrl, '_blank');
+        if (!win || win.closed || typeof win.closed === 'undefined') {
+          window.location.href = waUrl;
+        }
+      } catch (err) {
+        window.location.href = waUrl;
+      }
     }
   };
 
@@ -117,12 +127,21 @@ export default function JoinPage() {
               </div>
               <h2 className="font-heading text-5xl text-white">WELCOME TO THE SQUAD!</h2>
               <p className="text-neutral-300 text-base max-w-md mx-auto">
-                Your application for <span className="text-[#C89B3C] font-bold">{formData.fullName}</span> has been logged. Our head coach will contact you on WhatsApp with your induction kit details.
+                Your application for <span className="text-[#C89B3C] font-bold">{formData.fullName}</span> has been formatted and redirected to our Head Coach on WhatsApp (+91 95444 57903).
               </p>
-              <div className="pt-4">
+              <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a
+                  href={getWaUrl()}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-8 py-3.5 rounded-lg bg-emerald-500 hover:bg-emerald-600 text-black font-heading text-xl font-bold flex items-center gap-2 shadow-lg shadow-emerald-500/20"
+                >
+                  <MessageCircle className="w-5 h-5 fill-current" />
+                  <span>OPEN IN WHATSAPP NOW</span>
+                </a>
                 <button
                   onClick={() => { setSubmitted(false); setStep(1); }}
-                  className="px-8 py-3 rounded-lg bg-[#141414] border border-[#C89B3C] text-[#C89B3C] font-heading text-lg"
+                  className="px-8 py-3.5 rounded-lg bg-[#141414] border border-[#C89B3C] text-[#C89B3C] font-heading text-xl font-bold"
                 >
                   SUBMIT ANOTHER REGISTRATION
                 </button>
