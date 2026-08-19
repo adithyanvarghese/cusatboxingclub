@@ -9,77 +9,30 @@ import FacilitiesSection from '@/components/home/FacilitiesSection';
 import GalleryPreview from '@/components/home/GalleryPreview';
 import VideoSection from '@/components/home/VideoSection';
 import MedalHoldersSection from '@/components/home/MedalHoldersSection';
-import { constructMetadata, SITE_CONFIG } from '@/lib/seo';
+import { constructMetadata, getJsonLdSchemas } from '@/lib/seo';
 
 export const metadata = constructMetadata({
-  title: "CUSAT Boxing Club",
-  description: "CUSAT Boxing Club — Premier boxing club at CUSAT, Kochi. Open to school children, youth cadets, university athletes, and the general public.",
+  title: "CUSAT Boxing Club — Premier Boxing Academy in Kochi, Kerala",
+  description: "CUSAT Boxing Club is the official premier boxing & combat sports academy at CUSAT Sports Complex, South Kalamassery, Kochi. 100% open to school children, youth cadets, university athletes, and working adults.",
   canonical: "/",
 });
 
 export default function HomePage() {
-  const jsonLdSchemas = {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "SportsOrganization",
-        "@id": `${SITE_CONFIG.url}/#organization`,
-        "name": SITE_CONFIG.name,
-        "alternateName": SITE_CONFIG.shortName,
-        "url": SITE_CONFIG.url,
-        "logo": SITE_CONFIG.ogImage,
-        "image": SITE_CONFIG.ogImage,
-        "description": SITE_CONFIG.description,
-        "telephone": SITE_CONFIG.phone,
-        "sameAs": [
-          SITE_CONFIG.socials.instagram,
-          SITE_CONFIG.socials.facebook
-        ],
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "CUSAT Sports Complex, South Kalamassery",
-          "addressLocality": "Kochi",
-          "addressRegion": "Kerala",
-          "postalCode": "682022",
-          "addressCountry": "IN"
-        }
-      },
-      {
-        "@type": "SportsActivityLocation",
-        "@id": `${SITE_CONFIG.url}/#location`,
-        "name": "CUSAT Boxing Arena",
-        "url": SITE_CONFIG.url,
-        "telephone": SITE_CONFIG.phone,
-        "geo": {
-          "@type": "GeoCoordinates",
-          "latitude": 10.0435,
-          "longitude": 76.3248
-        },
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "CUSAT Sports Complex, South Kalamassery",
-          "addressLocality": "Kochi",
-          "addressRegion": "Kerala",
-          "postalCode": "682022",
-          "addressCountry": "IN"
-        }
-      }
-    ]
-  };
+  const jsonLdSchemas = getJsonLdSchemas("/");
 
   return (
     <>
-      {/* JSON-LD Schema Script */}
+      {/* JSON-LD Structured Data for Google Rich Snippets & AI Answer Engines */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdSchemas) }}
       />
 
       <main className="min-h-screen bg-[#070707] text-white">
-        {/* 1. Fenriz Style Hero Header */}
+        {/* 1. Hero Header */}
         <Hero />
 
-        {/* 2. Unsere Kurse (Courses & Divisions Grid) */}
+        {/* 2. Courses & Divisions Grid */}
         <CoursesGrid />
 
         {/* 3. Direct Contact & Call Desk Section */}
@@ -88,16 +41,16 @@ export default function HomePage() {
         {/* 4. Full-Bleed Action Divider */}
         <SectionDivider
           imageSrc="https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?q=80&w=2000&auto=format&fit=crop"
-          altText="CUSAT Boxing Ring Sparring"
+          altText="CUSAT Boxing Ring Sparring in Kalamassery Kochi"
         />
 
         {/* 4b. Sliding Medal Holders & Champions Ticker */}
         <MedalHoldersSection />
 
-        {/* 5. Kursplan (Weekly Schedule Preview) */}
+        {/* 5. Weekly Schedule Preview */}
         <SchedulePreview />
 
-        {/* 6. Über uns (About Heritage & Facility) */}
+        {/* 6. About Heritage & Facility */}
         <AboutPreview />
 
         {/* 6. Gym Facilities & Equipment */}

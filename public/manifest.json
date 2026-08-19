@@ -1,0 +1,17 @@
+{
+  "name": "CUSAT Boxing Club",
+  "short_name": "CUSAT Boxing",
+  "description": "Premier boxing & combat sports academy at CUSAT Sports Complex, South Kalamassery, Kochi.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#070707",
+  "theme_color": "#C89B3C",
+  "icons": [
+    {
+      "src": "/logo.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    }
+  ]
+}
