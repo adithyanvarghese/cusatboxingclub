@@ -1,9 +1,10 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 export default function CustomCursor() {
-  const [position, setPosition] = useState({ x: -100, y: -100 });
+  const outerRef = useRef<HTMLDivElement>(null);
+  const innerRef = useRef<HTMLDivElement>(null);
   const [isPointer, setIsPointer] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -15,8 +16,22 @@ export default function CustomCursor() {
 
     setIsVisible(true);
 
+    let rafId: number;
+    let mouseX = -100;
+    let mouseY = -100;
+
+    const updatePosition = () => {
+      if (outerRef.current && innerRef.current) {
+        outerRef.current.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%, -50%)`;
+        innerRef.current.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%, -50%)`;
+      }
+    };
+
     const handleMouseMove = (e: MouseEvent) => {
-      setPosition({ x: e.clientX, y: e.clientY });
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(updatePosition);
 
       const target = e.target as HTMLElement;
       if (
@@ -36,11 +51,12 @@ export default function CustomCursor() {
     const handleMouseLeave = () => setIsVisible(false);
     const handleMouseEnter = () => setIsVisible(true);
 
-    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mousemove', handleMouseMove, { passive: true });
     document.addEventListener('mouseleave', handleMouseLeave);
     document.addEventListener('mouseenter', handleMouseEnter);
 
     return () => {
+      cancelAnimationFrame(rafId);
       window.removeEventListener('mousemove', handleMouseMove);
       document.removeEventListener('mouseleave', handleMouseLeave);
       document.removeEventListener('mouseenter', handleMouseEnter);
@@ -53,19 +69,15 @@ export default function CustomCursor() {
     <>
       {/* Outer Follower Ring */}
       <div
+        ref={outerRef}
         className={`fixed top-0 left-0 pointer-events-none z-50 rounded-full border border-[#C89B3C] transition-transform duration-300 ease-out ${
           isPointer ? 'w-12 h-12 bg-[#C89B3C]/10 scale-125 border-opacity-80' : 'w-8 h-8 border-opacity-40'
         }`}
-        style={{
-          transform: `translate3d(${position.x}px, ${position.y}px, 0) translate(-50%, -50%)`,
-        }}
       />
       {/* Center Dot */}
       <div
+        ref={innerRef}
         className="fixed top-0 left-0 pointer-events-none z-50 w-2 h-2 bg-[#C89B3C] rounded-full shadow-[0_0_10px_#C89B3C]"
-        style={{
-          transform: `translate3d(${position.x}px, ${position.y}px, 0) translate(-50%, -50%)`,
-        }}
       />
     </>
   );

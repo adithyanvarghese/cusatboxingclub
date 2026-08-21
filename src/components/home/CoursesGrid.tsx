@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { COURSES } from '@/data/clubData';
 import { ArrowUpRight, Shield } from 'lucide-react';
@@ -44,16 +45,22 @@ export default function CoursesGrid() {
               {/* Image Container with B&W to Color Hover Effect */}
               <div className="relative h-64 sm:h-72 w-full overflow-hidden bg-black">
                 {/* Monochrome Base Image */}
-                <img
+                <Image
                   src={course.bwImage}
-                  alt={course.title}
-                  className="absolute inset-0 w-full h-full object-cover grayscale transition-opacity duration-700 group-hover:opacity-0"
+                  alt={`${course.title} at CUSAT Boxing Club in Kalamassery, Ernakulam`}
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  quality={75}
+                  className="object-cover grayscale transition-opacity duration-700 group-hover:opacity-0"
                 />
                 {/* Color Image Fade-In on Hover */}
-                <img
+                <Image
                   src={course.colorImage}
-                  alt={course.title}
-                  className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
+                  alt={`${course.title} training session at CUSAT Sports Complex`}
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  quality={75}
+                  className="object-cover opacity-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
                 />
 
                 <div className="absolute inset-0 bg-gradient-to-t from-[#141414] via-black/30 to-transparent" />

@@ -2,9 +2,12 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
+import dynamic from 'next/dynamic';
 import { motion } from 'framer-motion';
-import { Play, ChevronDown, Shield, Trophy, Sparkles, Phone } from 'lucide-react';
-import StoryModal from './StoryModal';
+import { ChevronDown, Trophy, Phone } from 'lucide-react';
+
+const StoryModal = dynamic(() => import('./StoryModal'), { ssr: false });
 
 export default function Hero() {
   const [videoModalOpen, setVideoModalOpen] = useState(false);
@@ -13,10 +16,14 @@ export default function Hero() {
     <section className="relative min-h-screen flex items-center justify-center pt-24 pb-16 overflow-hidden bg-[#0A0A0A]">
       {/* Background Image / Video Simulation Overlay */}
       <div className="absolute inset-0 z-0">
-        <img
+        <Image
           src="https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?q=80&w=2000&auto=format&fit=crop"
-          alt="CUSAT Boxing Club Ring"
-          className="w-full h-full object-cover object-center opacity-30 filter scale-105 transform animate-pulse duration-10000"
+          alt="CUSAT Boxing Club Ring in South Kalamassery Ernakulam"
+          fill
+          priority
+          sizes="100vw"
+          quality={75}
+          className="object-cover object-center opacity-30"
         />
         {/* Layered Gradients */}
         <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/70 to-black/80" />
@@ -45,6 +52,9 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.1 }}
           className="font-heading text-6xl sm:text-7xl md:text-8xl lg:text-9xl leading-[0.9] tracking-tight text-white uppercase max-w-5xl mx-auto"
         >
+          <span className="block text-[#C89B3C] text-base sm:text-lg md:text-xl font-bold tracking-[0.2em] mb-3 text-center">
+            CUSAT BOXING CLUB — ERNAKULAM, KERALA
+          </span>
           FORGING CHAMPIONS.
           <br />
           INSIDE & OUTSIDE <span className="gold-gradient-text">THE RING.</span>
@@ -57,7 +67,7 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="mt-6 text-lg sm:text-xl text-neutral-300 max-w-2xl mx-auto font-normal leading-relaxed"
         >
-          Premier boxing academy at CUSAT Sports Complex. Certified coaching for school cadets, university athletes, working professionals, and fitness enthusiasts.
+          Premier boxing academy at CUSAT Sports Complex in South Kalamassery, Kochi. Certified coaching for school cadets, university athletes, working professionals, and fitness enthusiasts across Ernakulam.
         </motion.p>
 
         {/* Dual Fenriz CTAs */}

@@ -8,10 +8,10 @@ export default function Preloader() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Hide preloader after animation completes
+    // Hide preloader smoothly after entrance animation
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 2400);
+    }, 600);
 
     return () => clearTimeout(timer);
   }, []);

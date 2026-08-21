@@ -3,10 +3,10 @@ import { Metadata } from 'next';
 export const SITE_CONFIG = {
   name: "CUSAT Boxing Club",
   shortName: "CUSAT Boxing",
-  description: "CUSAT Boxing Club — Premier boxing & combat sports academy at CUSAT Sports Complex, South Kalamassery, Kochi. 100% open to school children, youth cadets, university students, working professionals, and the general public in Kochi, Kerala.",
+  description: "CUSAT Boxing Club is the premier boxing academy located at CUSAT Sports Complex in South Kalamassery, Kochi, serving school children, youth cadets, university athletes, working professionals, and fitness enthusiasts across Ernakulam, Kerala.",
   url: "https://cusatboxingclub.vercel.app",
   ogImage: "https://cusatboxingclub.vercel.app/logo.jpg",
-  location: "CUSAT Sports Complex, South Kalamassery, Kochi, Kerala 682022, India",
+  location: "University Road, CUSAT Sports Complex, South Kalamassery, Kalamassery, Kochi, Kerala 682022, India",
   phone: "+91 95444 57903",
   email: "boxing@cusat.ac.in",
   mapsUrl: "https://maps.app.goo.gl/9unYxnqjWt1CWZBP6",
@@ -31,8 +31,11 @@ export function constructMetadata({
   canonical?: string;
   noIndex?: boolean;
 } = {}): Metadata {
-  const fullTitle = !title || title.includes("CUSAT Boxing Club")
-    ? (title || "CUSAT Boxing Club — Premier Boxing Academy in Kochi, Kerala")
+  const defaultTitle = "CUSAT Boxing Club | Boxing Club in Ernakulam, Kerala";
+  const fullTitle = !title
+    ? defaultTitle
+    : title.includes("CUSAT Boxing Club")
+    ? title
     : `${title} | CUSAT Boxing Club`;
 
   const cleanCanonical = canonical.startsWith("/") ? canonical : `/${canonical}`;
@@ -41,25 +44,6 @@ export function constructMetadata({
   return {
     title: fullTitle,
     description,
-    keywords: [
-      "CUSAT Boxing Club",
-      "CUSAT Boxing",
-      "CUSAT Boxing Gym",
-      "CUSAT Boxing Academy",
-      "Cochin University Boxing Club",
-      "Boxing Club Kochi",
-      "Boxing Gym Kalamassery",
-      "Boxing Training Kalamassery",
-      "Boxing Classes in Kochi",
-      "CUSAT Sports Complex Boxing",
-      "Kids Boxing Classes Kochi",
-      "School Boxing Cadets Kerala",
-      "Kerala Boxing Association",
-      "Combat Sports CUSAT",
-      "Best Boxing Gym in Kochi",
-      "Amateur Boxing Club Kochi",
-      "South Kalamassery Boxing"
-    ],
     authors: [{ name: "CUSAT Boxing Club", url: SITE_CONFIG.url }],
     creator: "CUSAT Boxing Club",
     publisher: "Cochin University of Science and Technology",
@@ -72,7 +56,7 @@ export function constructMetadata({
     },
     other: {
       "geo.region": "IN-KL",
-      "geo.placename": "South Kalamassery, Kochi",
+      "geo.placename": "South Kalamassery, Kalamassery, Kochi, Ernakulam, Kerala",
       "geo.position": "10.0435;76.3248",
       "ICBM": "10.0435, 76.3248"
     },
@@ -134,8 +118,8 @@ export function getJsonLdSchemas(pathname: string = "/") {
     ],
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "CUSAT Sports Complex, South Kalamassery",
-      "addressLocality": "Kochi",
+      "streetAddress": "University Road, CUSAT Sports Complex, South Kalamassery",
+      "addressLocality": "Kalamassery, Kochi",
       "addressRegion": "Kerala",
       "postalCode": "682022",
       "addressCountry": "IN"
@@ -145,6 +129,20 @@ export function getJsonLdSchemas(pathname: string = "/") {
       "latitude": 10.0435,
       "longitude": 76.3248
     },
+    "areaServed": [
+      {
+        "@type": "AdministrativeArea",
+        "name": "Ernakulam District"
+      },
+      {
+        "@type": "City",
+        "name": "Kochi"
+      },
+      {
+        "@type": "City",
+        "name": "Kalamassery"
+      }
+    ],
     "openingHoursSpecification": [
       {
         "@type": "OpeningHoursSpecification",
@@ -173,18 +171,18 @@ export function getJsonLdSchemas(pathname: string = "/") {
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "Is CUSAT Boxing Club open to non-CUSAT students and the general public?",
+        "name": "Where is CUSAT Boxing Club located in Ernakulam?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes! CUSAT Boxing Club is 100% open to school children, youth cadets, college students, working professionals, and boxing enthusiasts across Kochi and Kerala."
+          "text": "CUSAT Boxing Club is located at University Road, CUSAT Sports Complex, South Kalamassery, Kalamassery, Kochi, Kerala 682022, within Ernakulam district."
         }
       },
       {
         "@type": "Question",
-        "name": "Where is CUSAT Boxing Club located in Kochi?",
+        "name": "Is CUSAT Boxing Club open to non-CUSAT students and the general public?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "CUSAT Boxing Club is located at the CUSAT Sports Complex, South Kalamassery, Kochi, Kerala 682022."
+          "text": "Yes! CUSAT Boxing Club is 100% open to school children (ages 8+), youth cadets, college students, working professionals, and boxing enthusiasts across Ernakulam and Kochi."
         }
       },
       {
@@ -200,19 +198,24 @@ export function getJsonLdSchemas(pathname: string = "/") {
         "name": "Does CUSAT Boxing Club offer free trial sessions?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes, CUSAT Boxing Club offers free trial sessions for new beginners and prospective boxers. You can register for a free trial online on the official website."
+          "text": "Yes, CUSAT Boxing Club offers free trial sessions for beginners and prospective boxers. You can register for a free trial online on the official website."
         }
       },
       {
         "@type": "Question",
-        "name": "What programs and courses are offered at CUSAT Boxing Club?",
+        "name": "What boxing programs are offered at CUSAT Boxing Club?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "CUSAT Boxing Club offers School Boxing Cadets (for school kids), Youth & Junior Boxing, University Varsity Squad training, and Fitness & Amateur Boxing for working adults."
+          "text": "CUSAT Boxing Club offers School Boxing Cadets (ages 8-17), Youth & Junior Boxing, CUSAT University Varsity Squad training, and General Adult Fitness & Amateur Boxing."
         }
       }
     ]
   };
+
+  const rawPath = pathname === "/" ? "" : pathname.replace(/^\//, "");
+  const formattedPageName = rawPath
+    ? rawPath.charAt(0).toUpperCase() + rawPath.slice(1)
+    : "Home";
 
   const breadcrumbSchema = {
     "@type": "BreadcrumbList",
@@ -227,7 +230,7 @@ export function getJsonLdSchemas(pathname: string = "/") {
       ...(pathname !== "/" ? [{
         "@type": "ListItem",
         "position": 2,
-        "name": pathname.replace("/", "").charAt(0).toUpperCase() + pathname.slice(2),
+        "name": formattedPageName,
         "item": `${baseUrl}${pathname}`
       }] : [])
     ]
@@ -238,3 +241,4 @@ export function getJsonLdSchemas(pathname: string = "/") {
     "@graph": [organizationSchema, faqSchema, breadcrumbSchema]
   };
 }
+

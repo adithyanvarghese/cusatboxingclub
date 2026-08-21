@@ -12,8 +12,8 @@ import MedalHoldersSection from '@/components/home/MedalHoldersSection';
 import { constructMetadata, getJsonLdSchemas } from '@/lib/seo';
 
 export const metadata = constructMetadata({
-  title: "CUSAT Boxing Club — Premier Boxing Academy in Kochi, Kerala",
-  description: "CUSAT Boxing Club is the official premier boxing & combat sports academy at CUSAT Sports Complex, South Kalamassery, Kochi. 100% open to school children, youth cadets, university athletes, and working adults.",
+  title: "CUSAT Boxing Club | Boxing Club in Ernakulam, Kerala",
+  description: "CUSAT Boxing Club is the premier boxing academy located at CUSAT Sports Complex in South Kalamassery, Kochi, serving athletes, students, youth cadets, and fitness enthusiasts across Ernakulam, Kerala.",
   canonical: "/",
 });
 

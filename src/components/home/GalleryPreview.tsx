@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Camera, Eye, ArrowRight, Play } from 'lucide-react';
 import { GALLERY_ITEMS } from '@/data/clubData';
@@ -44,10 +45,13 @@ export default function GalleryPreview() {
               onClick={() => setSelectedImage(item.image)}
               className="group relative h-72 rounded-2xl overflow-hidden cursor-pointer border border-white/10 hover:border-[#C89B3C] transition-all duration-500"
             >
-              <img
+              <Image
                 src={item.image}
-                alt={item.title}
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                alt={`${item.title} at CUSAT Boxing Club in Kalamassery, Ernakulam`}
+                fill
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                quality={75}
+                className="object-cover group-hover:scale-110 transition-transform duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
 

@@ -2,33 +2,22 @@ import React from 'react';
 import Link from 'next/link';
 import { Shield, Award, CheckCircle2, Flame, HeartHandshake, HelpCircle, ArrowRight } from 'lucide-react';
 import { FAQS } from '@/data/clubData';
-import { constructMetadata } from '@/lib/seo';
+import { constructMetadata, getJsonLdSchemas } from '@/lib/seo';
 
 export const metadata = constructMetadata({
-  title: "About Us | Heritage & Facilities",
-  description: "Learn about the history, mission, vision, coaching philosophy, and high-performance boxing facility of CUSAT Boxing Club in Kochi, Kerala.",
+  title: "About CUSAT Boxing Club | Boxing Academy in Ernakulam",
+  description: "Discover the history, certified coaching staff, mission, and athletic heritage of CUSAT Boxing Club at CUSAT Sports Complex in Kalamassery, Ernakulam, Kerala.",
   canonical: "/about",
 });
 
 export default function AboutPage() {
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": FAQS.map(faq => ({
-      "@type": "Question",
-      "name": faq.question,
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": faq.answer
-      }
-    }))
-  };
+  const jsonLdSchemas = getJsonLdSchemas("/about");
 
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdSchemas) }}
       />
 
       <main className="min-h-screen pt-32 pb-24 bg-[#0A0A0A] text-white">

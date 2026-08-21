@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Shield, ArrowRight, CheckCircle2 } from 'lucide-react';
 
@@ -19,11 +20,15 @@ export default function AboutPreview() {
             transition={{ duration: 0.8 }}
             className="relative"
           >
-            <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl group">
-              <img
+            <div className="relative h-[480px] sm:h-[540px] w-full rounded-2xl overflow-hidden border border-white/10 shadow-2xl group">
+              <Image
                 src="/training photos/ring.webp"
-                alt="CUSAT Boxing Arena Ring"
-                className="w-full h-[480px] sm:h-[540px] object-cover object-center transform group-hover:scale-105 transition-transform duration-700"
+                alt="CUSAT Boxing Arena Ring in Kalamassery Ernakulam"
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                quality={75}
+                loading="lazy"
+                className="object-cover object-center transform group-hover:scale-105 transition-transform duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80" />
 

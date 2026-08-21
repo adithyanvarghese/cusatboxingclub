@@ -34,7 +34,7 @@ export default function Footer() {
             </Link>
 
             <p className="text-neutral-400 text-sm leading-relaxed pr-4">
-              Premier boxing & combat academy located at CUSAT. 100% open to school children (ages 8+), youth cadets, university students, working professionals, and the general public.
+              Premier boxing academy located at CUSAT Sports Complex in South Kalamassery, Kochi. 100% open to school children (ages 8+), youth cadets, university athletes, working professionals, and boxing enthusiasts across Ernakulam, Kerala.
             </p>
 
             <div className="flex items-center gap-3 pt-2">
@@ -56,10 +56,11 @@ export default function Footer() {
               {[
                 { label: 'Home', href: '/' },
                 { label: 'About Club', href: '/about' },
-                { label: 'Varsity Team', href: '/team' },
+                { label: 'Boxing Classes', href: '/courses' },
+                { label: 'Training Schedule', href: '/schedule' },
                 { label: 'Facilities & Arena', href: '/facilities' },
+                { label: 'Varsity Team', href: '/team' },
                 { label: 'Photo Gallery', href: '/gallery' },
-                { label: 'Membership', href: '/join' },
               ].map((item) => (
                 <li key={item.label}>
                   <Link
@@ -74,30 +75,34 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Training Categories */}
+          {/* Action Pathways & Training */}
           <div>
             <h4 className="font-heading text-lg tracking-wider text-white mb-4 border-b border-[#C89B3C]/30 pb-1 inline-block">
-              DIVISIONS & ARENA
+              GET STARTED
             </h4>
             <ul className="space-y-2.5">
               <li>
-                <Link href="/#facilities" className="hover:text-[#C89B3C] transition-colors">
-                  Ring & Training Facilities
+                <Link href="/trial" className="hover:text-[#C89B3C] transition-colors flex items-center gap-1 group">
+                  <ChevronRight className="w-3 h-3 text-[#C89B3C] opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <span>Book Free Trial Class</span>
                 </Link>
               </li>
               <li>
-                <Link href="/about" className="hover:text-[#C89B3C] transition-colors">
-                  High Performance Center
+                <Link href="/join" className="hover:text-[#C89B3C] transition-colors flex items-center gap-1 group">
+                  <ChevronRight className="w-3 h-3 text-[#C89B3C] opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <span>Join the Squad</span>
                 </Link>
               </li>
               <li>
-                <Link href="/events" className="hover:text-[#C89B3C] transition-colors">
-                  Inter-University Bouts
+                <Link href="/contact" className="hover:text-[#C89B3C] transition-colors flex items-center gap-1 group">
+                  <ChevronRight className="w-3 h-3 text-[#C89B3C] opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <span>Contact & Map Location</span>
                 </Link>
               </li>
               <li>
-                <Link href="/join" className="hover:text-[#C89B3C] transition-colors">
-                  Beginners Fundamental Camp
+                <Link href="/facilities" className="hover:text-[#C89B3C] transition-colors flex items-center gap-1 group">
+                  <ChevronRight className="w-3 h-3 text-[#C89B3C] opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <span>Ring & Equipment Tour</span>
                 </Link>
               </li>
             </ul>
@@ -111,7 +116,7 @@ export default function Footer() {
             <ul className="space-y-3">
               <li className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-[#C89B3C] mt-1 shrink-0" />
-                <a href={SITE_CONFIG.mapsUrl} target="_blank" rel="noopener noreferrer" className="hover:text-[#C89B3C] transition-colors">CUSAT Sports Arena, South Kalamassery, Kochi, Kerala 682022</a>
+                <a href={SITE_CONFIG.mapsUrl} target="_blank" rel="noopener noreferrer" className="hover:text-[#C89B3C] transition-colors">University Road, CUSAT Sports Arena, South Kalamassery, Kalamassery, Kochi, Ernakulam, Kerala 682022</a>
               </li>
               <li className="flex items-center gap-2.5">
                 <Phone className="w-4 h-4 text-[#C89B3C] shrink-0" />

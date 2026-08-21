@@ -4,10 +4,11 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
-import { Search, Menu, X, ChevronRight, Phone } from 'lucide-react';
+import dynamic from 'next/dynamic';
+import { Search, Menu, X, Phone } from 'lucide-react';
 import MobileNav from './MobileNav';
-import SearchModal from './SearchModal';
+
+const SearchModal = dynamic(() => import('./SearchModal'), { ssr: false });
 
 const NAV_LINKS = [
   { name: 'COURSES', href: '/courses' },

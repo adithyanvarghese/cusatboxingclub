@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Shield, ArrowRight, Sparkles } from 'lucide-react';
 
@@ -10,10 +11,14 @@ export default function JoinCTA() {
     <section className="relative py-28 bg-[#0A0A0A] overflow-hidden">
       {/* Background Image Overlay */}
       <div className="absolute inset-0 z-0">
-        <img
+        <Image
           src="https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?q=80&w=1800&auto=format&fit=crop"
-          alt="CUSAT Boxing Arena Ring"
-          className="w-full h-full object-cover opacity-25 filter brightness-50"
+          alt="CUSAT Boxing Arena Ring in Kalamassery Ernakulam"
+          fill
+          sizes="100vw"
+          quality={75}
+          loading="lazy"
+          className="object-cover opacity-25 filter brightness-50"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_var(--tw-gradient-stops))] from-[#C89B3C]/20 via-transparent to-transparent" />
